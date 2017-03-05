@@ -15,6 +15,59 @@
           answer: 42
         }
     });
+    console.log('初期値の取得');
+    console.log(component.get('answer'));
+
+    // 新規値をセット
+    component.set({
+      answer2: '50'
+    });
+    console.log('追加した値');
+    console.log(component.get('answer2'));
+
+    // 既存の値を更新
+    console.log('変更前');
+    console.log(component.get('name'));
+    component.set({
+      name: 'ooizumi'
+    });
+    console.log('変更後');
+    console.log(component.get('name'));
+
+    console.log('observer');
+    console.log('answer 変数の初期値');
+    const observer = component.observe('answer', answer => {
+      console.log(`the answer is ${answer}`);
+    });
+
+    console.log('answer 変数の値を変更する');
+    component.set({answer: 'google it'});
+    console.log('observerの変更検知が動いてるハズ！');
+
+    console.log('observerの変更検知しても、コールバックをキャンセルする');
+    observer.cancel();
+    component.set({answer: 'yahoo it'});
+    console.log('answerの値は変更されている');
+    console.log(component.get('answer'));
+
+    console.log('イベント名を指定して、callback関数を呼ぶ');
+    const listener = component.on('thingHappened', event => {
+      console.log(`A thing happened: ${event.thing}`);
+    });
+
+    console.log('component.onで登録したイベントを発火させる');
+    component.fire('thingHappened', {
+      thing: 'this event was fired'
+    });
+
+    console.log('登録したイベントを削除する');
+    listener.cancel();
+
+    console.log('削除済みのため、イベントが発火しない');
+    component.fire('thingHappened', {
+      thing: 'this event was fired'
+    });
+
   </script>
 </body>
 </html>
