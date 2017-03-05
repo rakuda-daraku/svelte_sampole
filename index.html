@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My first Svelte app</title>
+</head>
+<body>
+  <main></main>
+  <script src="HelloWorld.js"></script>
+  <script>
+    let component = new HelloWorld({
+        target: document.querySelector('main'),
+        data: {
+          name: '太郎',
+          answer: 42
+        }
+    });
+  </script>
+</body>
+</html>
