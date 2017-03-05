@@ -29,7 +29,7 @@
     console.log('変更前');
     console.log(component.get('name'));
     component.set({
-      name: 'ooizumi'
+      name: '一郎'
     });
     console.log('変更後');
     console.log(component.get('name'));
@@ -67,6 +67,12 @@
     component.fire('thingHappened', {
       thing: 'this event was fired'
     });
+
+    component.on( 'teardown', () => {
+      alert( 'goodbye!' );
+    });
+    // console.log('component削除時の後処理');
+    // component.teardown();
 
   </script>
 </body>
