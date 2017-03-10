@@ -11,8 +11,29 @@
     let component = new HelloWorld({
         target: document.querySelector('main'),
         data: {
+          hello: 'Hello ',
           name: '太郎',
-          answer: 42
+          answer: 42,
+          color: 'steelblue',
+          user: {
+            loggedIn: false
+          },
+          x: 8,
+          items: [
+            {
+              name: '太郎',
+              age: 10
+            },
+            {
+              name: '次郎',
+              age: 6
+            },
+            {
+              name: '三郎',
+              age: 30
+            },
+          ],
+          count: 0
         }
     });
   </script>
